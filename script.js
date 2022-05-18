@@ -5,6 +5,15 @@ const audioElement = document.getElementById('audio')
 // Todo: Using Async function 
 //* API Url: https://v2.jokeapi.dev/joke/Any
 
+
+function toggleJokeButton() {
+  try {
+    button.disabled = !button.disabled;
+  } catch (e) {
+    console.log('whoops', e)
+  }
+}
+
 function passJokeToSpeech(joke) {
   console.log("Tell me the joke:", joke)
   VoiceRSS.speech({
@@ -19,7 +28,6 @@ function passJokeToSpeech(joke) {
   });
 };
 
-
 async function fetchJokesFromApi(url) {
   let joke = '';
   const apiUrl = 'https://v2.jokeapi.dev/joke/Any'
@@ -32,6 +40,7 @@ async function fetchJokesFromApi(url) {
       joke = data.joke;
     }
     passJokeToSpeech(joke);
+    toggleJokeButton();
   } catch (e) {
     console.log(`We're out of punch lines!`, e)
   }
@@ -40,6 +49,7 @@ async function fetchJokesFromApi(url) {
 //* Event Listeners
 
 button.addEventListener('click', fetchJokesFromApi);
+audioElement.addEventListener('ended', toggleJokeButton);
 
 
 
