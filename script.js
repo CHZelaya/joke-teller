@@ -1,8 +1,6 @@
 const button = document.getElementById('button');
 const audioElement = document.getElementById('audio')
 
-//Todo: Get Jokes from Joke API
-// Todo: Using Async function 
 //* API Url: https://v2.jokeapi.dev/joke/Any
 
 
@@ -17,7 +15,7 @@ function toggleJokeButton() {
 function passJokeToSpeech(joke) {
   console.log("Tell me the joke:", joke)
   VoiceRSS.speech({
-    key: '2c8f6d4d6b284077b4f6aa204d0b8749',
+    key: '',
     src: joke,
     hl: 'en-us',
     v: 'Linda',
